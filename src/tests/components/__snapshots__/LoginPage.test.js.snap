@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`shoulde correctly render LoginPage 1`] = `""`;
+exports[`shoulde correctly render LoginPage 1`] = `
+<div>
+  <button>
+    Login
+  </button>
+</div>
+`;
