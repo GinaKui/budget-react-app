@@ -1,6 +1,22 @@
 .box-layout {
-    background: url('/images/bg.jp');
     height: 100vh;
     width: 100vw;
+    background: url('/images/bg.jp');
     background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-layout__box {
+    padding: $l-size $m-size;
+    background: fade-out(white, .15);
+    border-radius: 3px;
+    text-align: center;
+    width: 25rem;
+}
+
+.box-layout__title {
+    margin: 0 0 $m-size 0;
+    line-height: 1;
 }
