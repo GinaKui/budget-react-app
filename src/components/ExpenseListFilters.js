@@ -26,8 +26,8 @@ export class ExpenseListFilters extends React.Component {
   };
   render() {
     return (
-      <div className="content-container">
-        <div className="input-group">
+      
+        <div className="input-group content-container">
           <div className="input-group__item">
             <input
             type="text"
@@ -38,6 +38,7 @@ export class ExpenseListFilters extends React.Component {
            />
           </div>
           <div className="input-group__item">
+            <span> Sort by</span>
             <select
               className="select"
               value={this.props.filters.sortBy}
@@ -60,7 +61,7 @@ export class ExpenseListFilters extends React.Component {
            />
           </div>
         </div> 
-      </div>
+      
     );
   }
 };
