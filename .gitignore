@@ -1,4 +1,12 @@
+
 node_modules/
+
+#build
 public/dist/
+
+# env files
 .env.test
 .env.development
+
+#sandbox
+playground/

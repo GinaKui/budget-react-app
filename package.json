@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
-    "node": "8.11.1"
+    "node": "10.15.3"
   },
   "author": "Andrew Mead",
   "license": "MIT",

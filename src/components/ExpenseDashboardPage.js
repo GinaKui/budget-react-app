@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ExpenseList from './ExpenseList';
 import ExpenseListFilters from './ExpenseListFilters';
 import ExpensesSummary from './ExpensesSummary';
 
 const ExpenseDashboardPage = () => (
-  <div>
+  <main>
     <ExpensesSummary />
     <ExpenseListFilters />
     <ExpenseList />
-  </div>
+  </main>
 );
 
 export default ExpenseDashboardPage;
