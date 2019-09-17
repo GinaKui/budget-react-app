@@ -1,7 +1,5 @@
-# Git commands
+#EZ Budget
 
-git init
-git status
-git add
-git commit
-git log
+deployed at: https://budget-react-app.herokuapp.com/
+
+single page app built by react and firebase.
