@@ -1,5 +1,5 @@
 {
-  "name": "expensify",
+  "name": "ezbudget",
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
@@ -13,7 +13,7 @@
     "dev-server": "webpack-dev-server",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
     "start": "node server/server.js",
-    "heroku-postbuild": "yarn run build:prod"
+    "heroku-postbuild": "npm run build:prod"
   },
   "dependencies": {
     "babel-cli": "6.24.1",
