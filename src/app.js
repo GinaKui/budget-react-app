@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+
 import { firebase } from './firebase/firebase';
 import configureStore from './store/configureStore';
 import AppRouter, { history } from './routers/AppRouter';
-import LoadingPage from './components/LoadingPage';
+import LoadingPage from './layout/LoadingPage';
 import { startSetExpenses } from './actions/expenses';
 import { login, logout } from './actions/auth';
 
