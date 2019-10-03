@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -17,7 +16,7 @@ module.exports = (env) => {
   const miniCSSExtract = new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output
     // all options are optional
-    filename: 'style.css',
+    filename: 'styles.css',
     ignoreOrder: false, // Enable to remove warnings about conflicting order
   });
 
@@ -25,7 +24,8 @@ module.exports = (env) => {
     entry: ['@babel/polyfill', './src/index.js'],
     output: {
       path: path.join(__dirname, 'public', 'dist'),
-      filename: 'bundle.js'
+      filename: 'bundle.js',
+      publicPath: '/'
     },
     mode: 'none',
     module: {
@@ -35,18 +35,16 @@ module.exports = (env) => {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
         }
       }, {
-        test: /\.s?css$/,
+        test: /\.(sa|sc|c)ss$/,
         use:
         [
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: process.env.NODE_ENV === 'development'
+              hmr: process.env.NODE_ENV === 'development',
+              publicPath: '../'
             }
           },
           {
@@ -79,7 +77,7 @@ module.exports = (env) => {
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
-      publicPath: '/dist/',
+      publicPath: '../',
       watchContentBase: true
     }
   };
