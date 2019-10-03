@@ -1,5 +1,6 @@
-#EZ Budget
+# EZ Budget
 
-deployed at: https://budget-react-app.herokuapp.com/
+deployed at [heroku](https://budget-react-app.herokuapp.com/)  
 
-single page app built by react and firebase.
+single page app built by React and Redux.  
+backend supported by firebase.  
