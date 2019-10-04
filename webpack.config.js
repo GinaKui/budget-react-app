@@ -1,9 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); 
 
+//get correct env parameter
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
 if (process.env.NODE_ENV === 'test') {
   require('dotenv').config({ path: '.env.test' });
 } else if (process.env.NODE_ENV === 'development') {
@@ -12,22 +13,15 @@ if (process.env.NODE_ENV === 'test') {
 
 module.exports = (env) => {
   const isProduction = env === 'production';
- // const CSSExtract = new ExtractTextPlugin('styles.css');
-  const miniCSSExtract = new MiniCssExtractPlugin({
-    // Options similar to the same options in webpackOptions.output
-    // all options are optional
-    filename: 'styles.css',
-    ignoreOrder: false, // Enable to remove warnings about conflicting order
-  });
 
   return {
     entry: ['@babel/polyfill', './src/index.js'],
     output: {
       path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js',
-      publicPath: '/'
+      publicPath: '/dist/'//how the file will be served by server
     },
-    mode: 'none',
+    mode: isProduction ? 'production' : 'development',
     module: {
       rules: [
       {
@@ -63,7 +57,11 @@ module.exports = (env) => {
       }]
     },
     plugins: [
-      miniCSSExtract,
+      new CleanWebpackPlugin(),//clear old built to always use fresh built file
+      new MiniCssExtractPlugin({
+        filename: 'styles.css',
+        ignoreOrder: false, // Enable to remove warnings about conflicting order
+      }),
       new webpack.DefinePlugin({
         'process.env.FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
         'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
@@ -77,9 +75,8 @@ module.exports = (env) => {
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
-      publicPath: '../',
+      publicPath: '/dist/',
       watchContentBase: true
     }
   };
 };
-
