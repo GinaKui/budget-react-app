@@ -1,5 +1,9 @@
 import database from '../firebase';
 
+/**
+ * @todo use validator pkg to valid the input
+ */
+
 // ADD_EXPENSE
 export const addExpense = (expense) => ({
   type: 'ADD_EXPENSE',
