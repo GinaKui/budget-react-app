@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`should render ExpenseDashboardPage 1`] = `
-<main>
-  <Connect(ExpensesSummary) />
-  <Connect(ExpenseListFilters) />
-  <Connect(ExpenseList) />
-</main>
-`;
