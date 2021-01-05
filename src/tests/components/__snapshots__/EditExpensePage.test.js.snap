@@ -34,7 +34,7 @@ exports[`should render EditExpensePage 1`] = `
       className="button button--secondary"
       onClick={[Function]}
     >
-      Remove Expense
+      Delete this Expense
     </button>
   </div>
 </div>

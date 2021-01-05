@@ -10,15 +10,16 @@ exports[`should render Header correctly 1`] = `
     <div
       className="header__content"
     >
-      <Link
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
         className="header__title"
-        replace={false}
         to="/dashboard"
       >
         <h1>
-          Expensify
+          EZ Budget
         </h1>
-      </Link>
+      </NavLink>
       <button
         className="button button--link"
         onClick={[Function]}

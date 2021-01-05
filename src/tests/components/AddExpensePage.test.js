@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import  { AddExpensePage } from '../../components/AddExpensePage';
+import  { AddExpensePage } from '../../layout/AddExpensePage';
 import expenses from '../fixtures/expenses';
 
 let startAddExpense, history, wrapper;
@@ -17,6 +17,6 @@ test('should render AddExpensePage correctly', () => {
 
 test('should handle Submit', () => {
     wrapper.find('ExpenseForm').prop('onSubmit')(expenses[1]);
-    expect(history.push).toHaveBeenLastCalledWith('/');
+    expect(history.push).toHaveBeenLastCalledWith('/dashboard');
     expect(startAddExpense).toHaveBeenLastCalledWith(expenses[1]);
 });

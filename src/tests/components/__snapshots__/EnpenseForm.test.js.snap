@@ -35,6 +35,7 @@ exports[`should render ExpenseForm correctly 1`] = `
     horizontalMargin={0}
     id="date"
     initialVisibleMonth={null}
+    inputIconPosition="before"
     isDayBlocked={[Function]}
     isDayHighlighted={[Function]}
     isOutsideRange={[Function]}
@@ -49,9 +50,11 @@ exports[`should render ExpenseForm correctly 1`] = `
     onFocusChange={[Function]}
     onNextMonthClick={[Function]}
     onPrevMonthClick={[Function]}
+    openDirection="down"
     orientation="horizontal"
     phrases={
       Object {
+        "calendarLabel": "Calendar",
         "chooseAvailableDate": [Function],
         "clearDate": "Clear Date",
         "closeDatePicker": "Close",
@@ -63,7 +66,7 @@ exports[`should render ExpenseForm correctly 1`] = `
         "jumpToNextMonth": "Move forward to switch to the next month",
         "jumpToPrevMonth": "Move backward to switch to the previous month",
         "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
-        select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+  select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
         "keyboardShortcuts": "Keyboard Shortcuts",
         "leftArrowRightArrow": "Right and left arrow keys",
         "moveFocusByOneDay": "Move backward (left) and forward (right) by one day",
@@ -89,6 +92,7 @@ exports[`should render ExpenseForm correctly 1`] = `
     screenReaderInputMessage=""
     showClearDate={false}
     showDefaultInputIcon={false}
+    weekDayFormat="dd"
     withFullScreenPortal={false}
     withPortal={false}
   />
@@ -98,11 +102,11 @@ exports[`should render ExpenseForm correctly 1`] = `
     placeholder="Add a note for your expense (optional)"
     value=""
   />
-  <div
-    className="button"
-  >
-    <button>
-      Save Expense
+  <div>
+    <button
+      className="button"
+    >
+      Save
     </button>
   </div>
 </form>
@@ -143,6 +147,7 @@ exports[`should render ExpenseForm correctly with expense data 1`] = `
     horizontalMargin={0}
     id="date"
     initialVisibleMonth={null}
+    inputIconPosition="before"
     isDayBlocked={[Function]}
     isDayHighlighted={[Function]}
     isOutsideRange={[Function]}
@@ -157,9 +162,11 @@ exports[`should render ExpenseForm correctly with expense data 1`] = `
     onFocusChange={[Function]}
     onNextMonthClick={[Function]}
     onPrevMonthClick={[Function]}
+    openDirection="down"
     orientation="horizontal"
     phrases={
       Object {
+        "calendarLabel": "Calendar",
         "chooseAvailableDate": [Function],
         "clearDate": "Clear Date",
         "closeDatePicker": "Close",
@@ -171,7 +178,7 @@ exports[`should render ExpenseForm correctly with expense data 1`] = `
         "jumpToNextMonth": "Move forward to switch to the next month",
         "jumpToPrevMonth": "Move backward to switch to the previous month",
         "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
-        select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+  select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
         "keyboardShortcuts": "Keyboard Shortcuts",
         "leftArrowRightArrow": "Right and left arrow keys",
         "moveFocusByOneDay": "Move backward (left) and forward (right) by one day",
@@ -197,6 +204,7 @@ exports[`should render ExpenseForm correctly with expense data 1`] = `
     screenReaderInputMessage=""
     showClearDate={false}
     showDefaultInputIcon={false}
+    weekDayFormat="dd"
     withFullScreenPortal={false}
     withPortal={false}
   />
@@ -206,11 +214,11 @@ exports[`should render ExpenseForm correctly with expense data 1`] = `
     placeholder="Add a note for your expense (optional)"
     value=""
   />
-  <div
-    className="button"
-  >
-    <button>
-      Save Expense
+  <div>
+    <button
+      className="button"
+    >
+      Save
     </button>
   </div>
 </form>
@@ -251,6 +259,7 @@ exports[`should render error for invalid form submission 1`] = `
     horizontalMargin={0}
     id="date"
     initialVisibleMonth={null}
+    inputIconPosition="before"
     isDayBlocked={[Function]}
     isDayHighlighted={[Function]}
     isOutsideRange={[Function]}
@@ -265,9 +274,11 @@ exports[`should render error for invalid form submission 1`] = `
     onFocusChange={[Function]}
     onNextMonthClick={[Function]}
     onPrevMonthClick={[Function]}
+    openDirection="down"
     orientation="horizontal"
     phrases={
       Object {
+        "calendarLabel": "Calendar",
         "chooseAvailableDate": [Function],
         "clearDate": "Clear Date",
         "closeDatePicker": "Close",
@@ -279,7 +290,7 @@ exports[`should render error for invalid form submission 1`] = `
         "jumpToNextMonth": "Move forward to switch to the next month",
         "jumpToPrevMonth": "Move backward to switch to the previous month",
         "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
-        select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+  select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
         "keyboardShortcuts": "Keyboard Shortcuts",
         "leftArrowRightArrow": "Right and left arrow keys",
         "moveFocusByOneDay": "Move backward (left) and forward (right) by one day",
@@ -305,6 +316,7 @@ exports[`should render error for invalid form submission 1`] = `
     screenReaderInputMessage=""
     showClearDate={false}
     showDefaultInputIcon={false}
+    weekDayFormat="dd"
     withFullScreenPortal={false}
     withPortal={false}
   />
@@ -314,11 +326,11 @@ exports[`should render error for invalid form submission 1`] = `
     placeholder="Add a note for your expense (optional)"
     value=""
   />
-  <div
-    className="button"
-  >
-    <button>
-      Save Expense
+  <div>
+    <button
+      className="button"
+    >
+      Save
     </button>
   </div>
 </form>
@@ -364,6 +376,7 @@ exports[`should render error for invalid form submission 2`] = `
     horizontalMargin={0}
     id="date"
     initialVisibleMonth={null}
+    inputIconPosition="before"
     isDayBlocked={[Function]}
     isDayHighlighted={[Function]}
     isOutsideRange={[Function]}
@@ -378,9 +391,11 @@ exports[`should render error for invalid form submission 2`] = `
     onFocusChange={[Function]}
     onNextMonthClick={[Function]}
     onPrevMonthClick={[Function]}
+    openDirection="down"
     orientation="horizontal"
     phrases={
       Object {
+        "calendarLabel": "Calendar",
         "chooseAvailableDate": [Function],
         "clearDate": "Clear Date",
         "closeDatePicker": "Close",
@@ -392,7 +407,7 @@ exports[`should render error for invalid form submission 2`] = `
         "jumpToNextMonth": "Move forward to switch to the next month",
         "jumpToPrevMonth": "Move backward to switch to the previous month",
         "keyboardNavigationInstructions": "Press the down arrow key to interact with the calendar and
-        select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
+  select a date. Press the question mark key to get the keyboard shortcuts for changing dates.",
         "keyboardShortcuts": "Keyboard Shortcuts",
         "leftArrowRightArrow": "Right and left arrow keys",
         "moveFocusByOneDay": "Move backward (left) and forward (right) by one day",
@@ -418,6 +433,7 @@ exports[`should render error for invalid form submission 2`] = `
     screenReaderInputMessage=""
     showClearDate={false}
     showDefaultInputIcon={false}
+    weekDayFormat="dd"
     withFullScreenPortal={false}
     withPortal={false}
   />
@@ -427,11 +443,11 @@ exports[`should render error for invalid form submission 2`] = `
     placeholder="Add a note for your expense (optional)"
     value=""
   />
-  <div
-    className="button"
-  >
-    <button>
-      Save Expense
+  <div>
+    <button
+      className="button"
+    >
+      Save
     </button>
   </div>
 </form>
