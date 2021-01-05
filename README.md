@@ -9,7 +9,7 @@ Use building tools such as webpack and babel.
 Unit test is written by jest
 
 ## Setup the app
-the following enviroment variables should be provided in a .env file at the project root.
+the following enviroment variables should be provided in an .env file at the project root.
 ```bash
 FIREBASE_API_KEY=
 FIREBASE_AUTH_DOMAIN=
@@ -19,4 +19,3 @@ FIREBASE_PROJECT_ID=
 FIREBASE_STORAGE_BUCKET=
 ```
 Refer to firebase documentation.
-f
