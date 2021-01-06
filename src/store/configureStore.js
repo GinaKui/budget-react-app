@@ -7,6 +7,9 @@ import authReducer from '../reducers/auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+/**
+ * @TODO refactor redux store to use redux toolkit
+ */
 export default () => {
   const store = createStore(
     combineReducers({
