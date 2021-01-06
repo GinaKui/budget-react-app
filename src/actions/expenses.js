@@ -1,4 +1,10 @@
 import database from '../firebase';
+import {
+  ADD_EXPENSE,
+  REMOVE_EXPENSE,
+  EDIT_EXPENSE,
+  SET_EXPENSES
+} from './types'
 
 /**
  * @todo use validator pkg to valid the input
@@ -6,7 +12,7 @@ import database from '../firebase';
 
 // ADD_EXPENSE
 export const addExpense = (expense) => ({
-  type: 'ADD_EXPENSE',
+  type: ADD_EXPENSE,
   expense
 });
 
@@ -32,7 +38,7 @@ export const startAddExpense = (expenseData = {}) => {
 
 // REMOVE_EXPENSE
 export const removeExpense = ({ id } = {}) => ({
-  type: 'REMOVE_EXPENSE',
+  type: REMOVE_EXPENSE,
   id
 });
 
@@ -48,7 +54,7 @@ export const startRemoveExpense = ({ id } = {}) => {
 
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
-  type: 'EDIT_EXPENSE',
+  type: EDIT_EXPENSE,
   id,
   updates
 });
@@ -64,7 +70,7 @@ export const startEditExpense = (id, updates) => {
 
 // SET_EXPENSES
 export const setExpenses = (expenses) => ({
-  type: 'SET_EXPENSES',
+  type: SET_EXPENSES,
   expenses
 });
 
