@@ -28,6 +28,7 @@ export class ExpenseListFilters extends Component {
     }
   };
   render() {
+    const { text, sortBy, startDate, endDate } = this.props.filters;
     return (    
       <div className="input-group content-container">
         <div className="input-group__item">
@@ -35,15 +36,15 @@ export class ExpenseListFilters extends Component {
           type="text"
           className="text-input"
           placeholder="Search Expenses"
-          value={this.props.filters.text}
+          value={text}
           onChange={this.onTextChange}
           />
         </div>
         <div className="input-group__item">
-          <span> Sort by</span>
+          <span>Sort by&nbsp;</span>
           <select
             className="select"
-            value={this.props.filters.sortBy}
+            value={sortBy}
             onChange={this.onSortChange}
           >
             <option value="date">Date</option>
@@ -52,8 +53,8 @@ export class ExpenseListFilters extends Component {
         </div>
         <div className="input-group__item">
           <DateRangePicker
-          startDate={this.props.filters.startDate}
-          endDate={this.props.filters.endDate}
+          startDate={startDate}
+          endDate={endDate}
           onDatesChange={this.onDatesChange}
           focusedInput={this.state.calendarFocused}
           onFocusChange={this.onFocusChange}

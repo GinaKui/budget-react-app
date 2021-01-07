@@ -19,7 +19,7 @@ exports[`shoulde render ExpenseListFilters correctly 1`] = `
     className="input-group__item"
   >
     <span>
-       Sort by
+      Sort by 
     </span>
     <select
       className="select"
@@ -147,7 +147,7 @@ exports[`shoulde render ExpenseListFilters with alt data correctly 1`] = `
     className="input-group__item"
   >
     <span>
-       Sort by
+      Sort by 
     </span>
     <select
       className="select"
