@@ -11,7 +11,7 @@ test('should render ExpenseForm correctly', () => {
 
 //should render ExpenseForm with expense data
 test('should render ExpenseForm correctly with expense data', () => {
-    const wrapper = shallow(<ExpenseForm expense={expenses[1]}/>);
+    const wrapper = shallow(<ExpenseForm expense={expenses[1]} />);
     expect(wrapper).toMatchSnapshot();
 });
 
@@ -30,7 +30,7 @@ test('should set description on input change', () => {
     const value = 'New description';
     const wrapper = shallow(<ExpenseForm />);
     wrapper.find('input').at(0).simulate('change', {
-        target: { value }
+        target: { name: 'description', value }
     });
     expect(wrapper.state('description')).toBe(value);
 });
@@ -39,7 +39,7 @@ test('should set note on textarea change', () => {
     const value = 'New note value';
     const wrapper = shallow(<ExpenseForm />);
     wrapper.find('textarea').simulate('change', {
-        target: { value }
+        target: { name: 'note', value }
     });
     expect(wrapper.state('note')).toBe(value);
 });

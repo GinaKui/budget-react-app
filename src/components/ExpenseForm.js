@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
-
 export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
@@ -15,19 +14,13 @@ export default class ExpenseForm extends React.Component {
       error: ''
     };
   }
-  onDescriptionChange = e => {
-    const description = e.target.value;
-    this.setState({ description });
-  };
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
-  onNoteChange = e => {
-    const note = e.target.value;
-    this.setState({ note });
-  };
+
   onAmountChange = e => {
     const amount = e.target.value;
     if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
@@ -93,7 +86,7 @@ export default class ExpenseForm extends React.Component {
           className="textarea"
           name="note"
           value={note}
-          onChange={this.onNoteChange}
+          onChange={this.handleChange}
         >
         </textarea>
         <div>
