@@ -1,7 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import expensesReducer from '../reducers/expenses';
-import filtersReducer from '../reducers/filters';
+//import filtersReducer from '../reducers/filters';
+import filtersReducer from '../slices/filtersSlice'
 //import authReducer from '../reducers/auth';
 import authReducer from '../slices/authSlice';
 
