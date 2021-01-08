@@ -4,9 +4,9 @@ import { connect, useDispatch } from 'react-redux';
 import { login } from '../slices/authSlice';
 import { history } from '../App'
 
+
 export const LoginPage = () => {
 	const dispatch = useDispatch();
-
 	const handleLogin = async () => {
 		dispatch(login());
 		history.push('/dashboard');
