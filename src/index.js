@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import { firebase } from './firebase';
 import App, { history, store } from './App';
 import LoadingPage from './layout/LoadingPage';
-import { startSetExpenses } from './actions/expenses';
+//import { startSetExpenses } from './actions/expenses';
+import { fetchExpenses } from './slices/expensesSlice';
 //import { login, logout } from './actions/auth';
 import {login, logout } from './slices/authSlice';
 import 'normalize.css/normalize.css';
@@ -21,10 +22,10 @@ const renderApp = () => {
 
 //ReactDOM.render(<LoadingPage />, document.getElementById('root'));
 
-firebase.auth().onAuthStateChanged( user => {
+/* firebase.auth().onAuthStateChanged( user => {
   if (user) {
-  //  store.dispatch(login(user.uid));
-    store.dispatch(startSetExpenses()).then(() => {
+    store.dispatch(login(user.uid));
+    store.dispatch(fetchExpenses()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {
         history.push('/dashboard');
@@ -35,6 +36,6 @@ firebase.auth().onAuthStateChanged( user => {
     renderApp();
     history.push('/');
   }
-});
+}); */
 
-//renderApp();
+renderApp();

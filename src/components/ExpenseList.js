@@ -1,9 +1,16 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
+import {fetchExpenses} from '../slices/expensesSlice';
 
-export const ExpenseList = (props) => (
+const ExpenseList = props => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchExpenses);
+  },[]);
+  const expenses = useSelector(selectExpenses);
+  return (
   <div className="content-container">
     <div className="list-header">
       <div className="show-for-mobile">Expenses</div>
@@ -12,17 +19,18 @@ export const ExpenseList = (props) => (
     </div>
     <div className="list-body">
     {
-      props.expenses.length === 0 ? (
+      expenses.length === 0 ? (
         <div className="list-item list-item--message">
           <span>No Expenses</span>
         </div>
       ) : (
-      props.expenses.map( (expense) => (<ExpenseListItem key={expense.id} {...expense} />) ) 
+      expenses.map( (expense) => (<ExpenseListItem key={expense.id} {...expense} />) ) 
       )
     }
     </div>
   </div>
 );
+  }
 
 const mapStateToProps = (state) => {
   return {
@@ -30,4 +38,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ExpenseList);
+//export default connect(mapStateToProps)(ExpenseList);
+export default ExpenseList;

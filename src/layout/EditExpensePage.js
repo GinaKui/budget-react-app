@@ -1,37 +1,44 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import ExpenseForm from '../components/ExpenseForm';
-import { startEditExpense, startRemoveExpense } from '../actions/expenses';
+import expenses from '../selectors/expenses';
+//import { startEditExpense, startRemoveExpense } from '../actions/expenses';
+import { editExpense, removeExpense } from '../slices/expensesSlice'
 /**
  * * @todo change to react function component
  */
-export class EditExpensePage extends React.Component {
-  onSubmit = expense => {
-    this.props.startEditExpense(this.props.expense.id, expense);
-    this.props.history.push('/dashboard');
+export default function EditExpensePage(props) {
+  const id = props.match.params.id;
+  const dispatch = useDispatch();
+  const expense = useSelector(({ expenses }) => {
+    return expenses.find(entity => entity.id === id);
+  });
+  onEdit = (id, expense) => {
+    //this.props.startEditExpense(this.props.expense.id, expense);
+    dispatch(editExpense(id, expense))
+    props.history.push('/dashboard');
   };
   onRemove = () => {
-    this.props.startRemoveExpense({ id: this.props.expense.id });
-    this.props.history.push('/dashboard');
+    dispatch(removeExpense({ id: this.props.expense.id }));
+    props.history.push('/dashboard');
   };
-  render() {
-    return (
-      <main>
-        <div className="page-header">
-          <div className="content-container">
-            <h1 className="page-header__title">Edit Expense</h1>
-          </div>
-        </div>
+ 
+  return (
+    <main>
+      <div className="page-header">
         <div className="content-container">
-          <ExpenseForm
-            expense={this.props.expense}
-            onSubmit={this.onSubmit}
-          />
-          <button className="button button--secondary" onClick={this.onRemove}>Delete this Expense</button>
-        </div>      
-      </main>
-    );
-  }
+          <h1 className="page-header__title">Edit Expense</h1>
+        </div>
+      </div>
+      <div className="content-container">
+        <ExpenseForm
+          expense={expense}
+          onSubmit={onEdit}
+        />
+        <button className="button button--secondary" onClick={onRemove}>Delete this Expense</button>
+      </div>      
+    </main>
+  ); 
 }
 
 const mapStateToProps = (state, props) => ({
@@ -43,4 +50,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   startRemoveExpense: (data) => dispatch(startRemoveExpense(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);
+//export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);
