@@ -5,6 +5,8 @@ const initialState = [];
 
 const fetchExpenses = createAsyncThunk('expenses/fetchExpenses', async () => {
   const uid = getState().auth.uid;
+  //debug break point
+  console.log('this is fetchexpenses, the uid is ' + uid)
   const snapShot = await database.ref(`users/${uid}/expenses`).once('value');
   return snapShot.map(childSnapShot => ({
     id: childSnapShot.key,

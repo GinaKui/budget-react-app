@@ -7,7 +7,7 @@ import {fetchExpenses} from '../slices/expensesSlice';
 const ExpenseList = props => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchExpenses);
+    dispatch(fetchExpenses)
   },[]);
   const expenses = useSelector(selectExpenses);
   return (

@@ -29,3 +29,7 @@ const App = () => (
 );
 
 export default App;
+
+/**
+ * @todo should use BrowserRouter instead of Router
+ */

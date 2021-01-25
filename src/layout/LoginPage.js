@@ -3,13 +3,22 @@ import { connect, useDispatch } from 'react-redux';
 //import { startLogin } from '../actions/auth';
 import { login } from '../slices/authSlice';
 import { history } from '../App'
-
+import {fetchExpenses} from '../slices/expensesSlice'
+import { firebase } from '../firebase'
 
 export const LoginPage = () => {
 	const dispatch = useDispatch();
 	const handleLogin = async () => {
 		dispatch(login());
-		history.push('/dashboard');
+		//history.push('/dashboard');
+		const user = await firebase.auth().onAuthStateChanged(user => {
+			history.push('/dashboard');
+		});
+
+				
+				
+					
+
 	}
 	return (
 	<div className="box-layout">

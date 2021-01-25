@@ -24,7 +24,7 @@ const renderApp = () => {
 
 /* firebase.auth().onAuthStateChanged( user => {
   if (user) {
-    store.dispatch(login(user.uid));
+ //   store.dispatch(login(user.uid));
     store.dispatch(fetchExpenses()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {

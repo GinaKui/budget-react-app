@@ -1,14 +1,17 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+/**
+ * 
+ * @todo Delete this file
+ */
 export const PublicRoute = ({
 	isAuthenticated,
 	component: Component,
 	...rest
 }) => (
 	<Route {...rest} component={(props) => (
-		isAuthenticated ? (
+		!isAuthenticated ? (
       <Redirect to='/' />
 		) : (
 			<Component {...props} />
