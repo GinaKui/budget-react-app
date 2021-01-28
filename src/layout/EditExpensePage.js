@@ -13,13 +13,13 @@ export default function EditExpensePage(props) {
   const expense = useSelector(({ expenses }) => {
     return expenses.find(entity => entity.id === id);
   });
-  onEdit = (id, expense) => {
+  const onEdit = (expense) => {
     //this.props.startEditExpense(this.props.expense.id, expense);
     dispatch(editExpense(id, expense))
     props.history.push('/dashboard');
   };
-  onRemove = () => {
-    dispatch(removeExpense({ id: this.props.expense.id }));
+  const onRemove = () => {
+    dispatch(removeExpense(id));
     props.history.push('/dashboard');
   };
  

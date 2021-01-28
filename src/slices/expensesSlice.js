@@ -1,21 +1,30 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import database from '../firebase';
+import { store } from '../App'
 
 const initialState = [];
 
 const fetchExpenses = createAsyncThunk('expenses/fetchExpenses', async () => {
-  const uid = getState().auth.uid;
+  const uid = store.getState().auth.uid;
+  console.log('this is fetchexpenses, uid is '+ uid)
   //debug break point
-  console.log('this is fetchexpenses, the uid is ' + uid)
-  const snapShot = await database.ref(`users/${uid}/expenses`).once('value');
-  return snapShot.map(childSnapShot => ({
-    id: childSnapShot.key,
-    ...childSnapShot.val()
-  }))
+  try{  
+    const snapShot = await database.ref(`users/${uid}/expenses`).once('value');
+    const result = []
+    snapShot.forEach(childSnapShot => {
+      result.push({  
+        id: childSnapShot.key,
+        ...childSnapShot.val()
+      })
+    })
+    return result;
+  } catch(err) {
+    console.log(err)
+  }
 });
 
 const addExpense = createAsyncThunk('expenses/addExpense', async expense => {
-  const uid = getState().auth.uid;
+  const uid = store.getState().auth.uid;
   const {
     description = 'unknown',
     note = '',
@@ -31,17 +40,22 @@ const addExpense = createAsyncThunk('expenses/addExpense', async expense => {
 });
 
 const removeExpense = createAsyncThunk('expenses/removeExpense', async id => {
-  const uid = getState().auth.uid;
+  const uid = store.getState().auth.uid;
   await database.ref(`users/${uid}/expenses/${id}`).remove();
   return id
 });
 
-const editExpense = createAsyncThunk('expenses/editExpense', async (id, updates) => {
-  const uid = getState().auth.uid;
-  await database.ref(`users/${uid}/expenses/${id}`).update(updates);
-  return {
-    id,
-    updates
+const editExpense = createAsyncThunk('expenses/editExpense', async (id, newExpense) => {
+  const uid = store.getState().auth.uid;
+  console.log('this is editExpense ',newExpense)
+  try{
+    await database.ref(`users/${uid}/expenses/${id}`).update(newExpense);
+    return {
+      id,
+      ...newExpense
+    }
+  } catch(err) {
+    console.log(err)
   }
 })
 
@@ -52,16 +66,16 @@ const expensesSlice = createSlice({
   },
   extraReducers: {
     [fetchExpenses.fulfilled]: (state, action) => {
-      state = action.payload
+      return action.payload
     },
     [addExpense.fulfilled]: (state, action) => {
-      state.push(action.payload);
+      state.expenses.push(action.payload);
     },
     [removeExpense.fulfilled]: (state, action) => {
-      state = state.filter(expense => expense.id !== action.payload);
+      state.expenses = state.expenses.filter(expense => expense.id !== action.payload);
     },
     [editExpense.fulfilled]: (state, action) => {
-      state = state.map(expense => {
+      state.expenses = state.expenses.map(expense => {
         if(expense.id === action.payload.id) {
           return {
             ...expense,
