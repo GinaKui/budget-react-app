@@ -47,12 +47,13 @@ const removeExpense = createAsyncThunk('expenses/removeExpense', async id => {
 
 const editExpense = createAsyncThunk('expenses/editExpense', async (id, newExpense) => {
   const uid = store.getState().auth.uid;
-  console.log('this is editExpense ',newExpense)
+  console.log('this is editExpense id',id)
+  console.log('editExpense, newExpense', newExpense)
   try{
     await database.ref(`users/${uid}/expenses/${id}`).update(newExpense);
     return {
       id,
-      ...newExpense
+      updates:newExpense
     }
   } catch(err) {
     console.log(err)

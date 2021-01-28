@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk';
 //import expensesReducer from '../reducers/expenses';
 import expensesReducer from '../slices/expensesSlice';
@@ -14,15 +14,13 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
  * @TODO refactor redux store to use redux toolkit
  */
 export default () => {
-  const store = createStore(
-    combineReducers({
+  const store = configureStore({
+    reducer: {
       expenses: expensesReducer,
       filters: filtersReducer,
       auth: authReducer
-    }),
-    composeEnhancers( applyMiddleware(thunk) )
-    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+    }
+  });
 
   return store;
 };
