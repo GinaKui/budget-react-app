@@ -7,7 +7,7 @@ import {
   sortByAmount, 
   setStartDate, 
   setEndDate 
-} from '../actions/filters';
+} from '../slices/filtersSlice';
 
 export class ExpenseListFilters extends Component {
   constructor(props) {

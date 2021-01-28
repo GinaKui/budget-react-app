@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 
 import configureStore from './store/configureStore';
 import PrivateRoute from './routers/PrivateRoute';
@@ -11,7 +12,7 @@ import AddExpensePage from './layout/AddExpensePage';
 import EditExpensePage from './layout/EditExpensePage';
 import NotFoundPage from './layout/NotFoundPage';
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 export const store = configureStore();
 
 const App = () => (
@@ -29,3 +30,7 @@ const App = () => (
 );
 
 export default App;
+
+/**
+ * @todo should use BrowserRouter instead of Router
+ */
