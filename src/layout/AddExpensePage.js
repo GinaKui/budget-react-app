@@ -1,19 +1,15 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
-import ExpenseForm from '../components/ExpenseForm';
-//import { startAddExpense } from '../actions/expenses';
+import { useDispatch } from 'react-redux';
 import { addExpense } from '../slices/expensesSlice';
-/**
- * @todo change to react function component
- */
-function AddExpensePage(props) {
+import ExpenseForm from '../components/ExpenseForm';
+
+export default function AddExpensePage(props) {
   const dispatch = useDispatch();
   const onSubmit = expense => {
-    //this.props.startAddExpense(expense);
-    
     dispatch(addExpense(expense));
     props.history.push('/dashboard');
   };
+
   return (
     <main>
       <div className="page-header">
@@ -27,12 +23,3 @@ function AddExpensePage(props) {
     </main>
   );
 };
-
-
-/* const mapDispatchToProps = (dispatch) => ({
-  startAddExpense: (expense) => dispatch(startAddExpense(expense))
-}); */
-
-export default AddExpensePage;
-
-//export default connect(undefined, mapDispatchToProps)(AddExpensePage);
