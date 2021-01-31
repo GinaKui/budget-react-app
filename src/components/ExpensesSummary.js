@@ -22,5 +22,4 @@ import selectExpensesTotal from '../selectors/expenses-total';
 	);
 };
 
-//export default connect(mapStateToProps)(ExpensesSummary);
 export default ExpensesSummary;

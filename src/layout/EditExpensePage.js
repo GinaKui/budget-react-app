@@ -1,22 +1,16 @@
 import React from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import ExpenseForm from '../components/ExpenseForm';
-import expenses from '../selectors/expenses';
-//import { startEditExpense, startRemoveExpense } from '../actions/expenses';
+import { useDispatch, useSelector } from 'react-redux';
 import { editExpense, removeExpense } from '../slices/expensesSlice'
-/**
- * * @todo change to react function component
- */
+import ExpenseForm from '../components/ExpenseForm';
+
 export default function EditExpensePage(props) {
   const id = props.match.params.id;
   const dispatch = useDispatch();
   const expense = useSelector(({ expenses }) => {
     return expenses.find(entity => entity.id === id);
   });
-  const onEdit = (update) => {
-    console.log('id', id)
-    console.log('expense', update)
-    dispatch(editExpense(id, update))
+  const onEdit = updates => {
+    dispatch(editExpense({ ...updates, id }))
     props.history.push('/dashboard');
   };
   const onRemove = () => {
@@ -41,14 +35,3 @@ export default function EditExpensePage(props) {
     </main>
   ); 
 }
-
-const mapStateToProps = (state, props) => ({
-  expense: state.expenses.find((expense) => expense.id === props.match.params.id)
-});
-
-const mapDispatchToProps = (dispatch, props) => ({
-  startEditExpense: (id, expense) => dispatch(startEditExpense(id, expense)),
-  startRemoveExpense: (data) => dispatch(startRemoveExpense(data))
-});
-
-//export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);

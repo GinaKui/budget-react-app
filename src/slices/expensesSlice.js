@@ -45,18 +45,18 @@ const removeExpense = createAsyncThunk('expenses/removeExpense', async id => {
   return id
 });
 
-const editExpense = createAsyncThunk('expenses/editExpense', async (id, newExpense) => {
+//async function can take only one parameter
+//the second parameter will be thunkAPI
+const editExpense = createAsyncThunk('expenses/editExpense', async ({id, ...newExpense}) => {
   const uid = store.getState().auth.uid;
-  console.log('this is editExpense id',id)
-  console.log('editExpense, newExpense', newExpense)
   try{
     await database.ref(`users/${uid}/expenses/${id}`).update(newExpense);
     return {
       id,
-      updates:newExpense
+      newExpense
     }
   } catch(err) {
-    console.log(err)
+    console.log('editExpense action err -', err)
   }
 })
 
