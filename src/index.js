@@ -1,13 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { firebase } from './firebase';
 import App, { history, store } from './App';
 import LoadingPage from './layout/LoadingPage';
-//import { startSetExpenses } from './actions/expenses';
-import { fetchExpenses } from './slices/expensesSlice';
-//import { login, logout } from './actions/auth';
-import {login, logout } from './slices/authSlice';
 import 'normalize.css/normalize.css';
 import 'react-dates/lib/css/_datepicker.css';
 import './styles/styles.scss';

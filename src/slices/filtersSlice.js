@@ -4,8 +4,8 @@ import moment from 'moment';
 const initialState = {
   text: '',
   sortBy: 'date',
-  startDate: moment().startOf('month'),
-  endDate: moment().endOf('month')
+  startDate: moment().startOf('month').format(),
+  endDate: moment().endOf('month').format()
 };
 
 const filtersSlice = createSlice({
@@ -15,16 +15,16 @@ const filtersSlice = createSlice({
     setTextFilter(state, action) {
       state.text = action.payload;
     },
-    sortByAmount(state, action) {
+    sortByAmount(state) {
       state.sortBy = 'amount';
     },
-    sortByDate(state, action) {
+    sortByDate(state) {
       state.sortBy = 'date'
     },
-    setStartDate(state, action) {
+    setStartDate: (state, action)=>{
       state.startDate = action.payload;
     },
-    setEndDate(state, action) {
+    setEndDate: (state, action) => {
       state.endDate = action.payload;
     }
   }

@@ -6,8 +6,6 @@ const initialState = [];
 
 const fetchExpenses = createAsyncThunk('expenses/fetchExpenses', async () => {
   const uid = store.getState().auth.uid;
-  console.log('this is fetchexpenses, uid is '+ uid)
-  //debug break point
   try{  
     const snapShot = await database.ref(`users/${uid}/expenses`).once('value');
     const result = []
@@ -45,7 +43,7 @@ const removeExpense = createAsyncThunk('expenses/removeExpense', async id => {
   return id
 });
 
-//async function can take only one parameter
+//async function can take only one parameter 
 //the second parameter will be thunkAPI
 const editExpense = createAsyncThunk('expenses/editExpense', async ({id, ...newExpense}) => {
   const uid = store.getState().auth.uid;

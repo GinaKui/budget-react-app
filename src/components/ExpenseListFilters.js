@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment'
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
 import { 
@@ -17,8 +18,8 @@ export class ExpenseListFilters extends Component {
     };
   }
   onDatesChange = ({ startDate, endDate }) => {
-    this.props.setStartDate(startDate);
-    this.props.setEndDate(endDate);
+    this.props.setStartDate(startDate ? moment(startDate).format() : startDate);
+    this.props.setEndDate(endDate ? moment(endDate).format() : endDate);
   };
   onFocusChange = calendarFocused => {
     this.setState(() => ({ calendarFocused }));
@@ -34,7 +35,10 @@ export class ExpenseListFilters extends Component {
     }
   };
   render() {
-    const { text, sortBy, startDate, endDate } = this.props.filters;
+    const { text, sortBy } = this.props.filters;
+    let { startDate, endDate } = this.props.filters;
+    startDate = moment(startDate);
+    endDate = moment(endDate)
     return (    
       <div className="input-group content-container">
         <div className="input-group__item">
@@ -59,14 +63,14 @@ export class ExpenseListFilters extends Component {
         </div>
         <div className="input-group__item">
           <DateRangePicker
-          startDate={startDate}
-          endDate={endDate}
-          onDatesChange={this.onDatesChange}
-          focusedInput={this.state.calendarFocused}
-          onFocusChange={this.onFocusChange}
-          showClearDates={true}
-          numberOfMonths={1}
-          isOutsideRange={() => false}
+            startDate={startDate}
+            endDate={endDate}
+            onDatesChange={this.onDatesChange}
+            focusedInput={this.state.calendarFocused}
+            onFocusChange={this.onFocusChange}
+            showClearDates={true}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
           />
         </div>
       </div>    
